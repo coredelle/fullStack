@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 
+//import router (controller) so that it can be used in server
+const indexRouter = require('./routes/index');
+
 //using ejs as viewEngine to begin with
 app.set('view-engine', 'ejs');
 
@@ -16,6 +19,8 @@ app.use(expressLayouts);
 
 //js, stylesheets, images, etc
 app.use(express.static('public'));
+
+app.use('/', indexRouter);
 
 
 // either listen on deployed port or 3000
